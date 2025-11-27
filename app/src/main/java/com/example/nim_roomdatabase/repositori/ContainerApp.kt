@@ -1,16 +1,9 @@
-package com.example.nim_roomdatabase.repositori
 
-import android.app.Application
-import com.example.nim_roomdatabase.room.DatabaseSiswa
+class AplikasiSiswa : Application(){
+    lateinit var container : ContainerApp
 
-interface ContainerApp{
-    val repositoriSiswa : RepositoriSiswa
+    override fun onCreate() {
+        super.onCreate()
+        container = ContainerDataApp(this)
+    }
 }
-
-class ContainerDataApp(private val context : context):
-        ContainerApp{
-            override val RepositoriSiswa: RepositoriSiswa by lazy {
-                OfflineRepositoriSiswa(
-                    DatabaseSiswa.getDatabase(context).siswaDao())
-            }
-        }
