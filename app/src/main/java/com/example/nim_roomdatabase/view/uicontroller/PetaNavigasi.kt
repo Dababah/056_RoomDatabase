@@ -16,6 +16,9 @@ import com.example.nim_roomdatabase.view.route.DestinasiEntry
 import com.example.nim_roomdatabase.view.route.DestinasiHome
 import com.example.nim_roomdatabase.view.route.DetailSiswaScreen
 
+@Composable
+fun SiswaApp(
+    navController: NavHostController = rememberNavController(),
 
         }
         composable (route=DestinasiEditSiswa.routeWithArgs,
