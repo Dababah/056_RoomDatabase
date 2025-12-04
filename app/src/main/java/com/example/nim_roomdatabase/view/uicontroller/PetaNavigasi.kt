@@ -19,16 +19,22 @@ import com.example.nim_roomdatabase.view.route.DetailSiswaScreen
 @Composable
 fun SiswaApp(
     navController: NavHostController = rememberNavController(),
-
-        }
-        composable (route=DestinasiEditSiswa.routeWithArgs,
-            argument= listOf(navArgument(DestinasiEditSiswa.itemIdArg){
-                type= NavType.IntType })){
-            EditSiswaScreen(
-                navigateback = {navController.popBackStack()},
-                onnavigateup = {navController.navigateUp()}
+    modifier: Modifier = Modifier
+) {
+    NavHost(
+        navController = navController,
+        startDestination = DestinasiHome.route,
+        modifier = modifier
+    ) {
+        // Halaman Home
+        composable(route = DestinasiHome.route) {
+            HomeScreen(
+                navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
+                // Tambahkan koma di atas ^
+                navigateToItemUpdate = {
+                    navController.navigate("${DestinasiDetailSiswa.route}/$it")
+                }
             )
+        }
 
-            }
-    }
-}
+
