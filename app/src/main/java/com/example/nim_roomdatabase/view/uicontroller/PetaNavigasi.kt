@@ -16,24 +16,7 @@ import com.example.nim_roomdatabase.view.route.DestinasiEntry
 import com.example.nim_roomdatabase.view.route.DestinasiHome
 import com.example.nim_roomdatabase.view.route.DetailSiswaScreen
 
-@Composable
-fun SiswaApp(
-    navController: NavHostController = rememberNavController(),
-    modifier: Modifier = Modifier
-) {
 
-
-
-        composable(
-            route = DestinasiDetailSiswa.routeWithArgs,
-            arguments = listOf(
-                navArgument(DestinasiDetailSiswa.itemIdArg) { // Hapus titik (.) sebelum navArgument
-                    type = NavType.IntType
-                }
-            )
-        ) {
-            DetailSiswaScreen(
-                navigateBack = { navController.navigateUp() })
         }
         composable (route=DestinasiEditSiswa.routeWithArgs,
             argument= listOf(navArgument(DestinasiEditSiswa.itemIdArg){
