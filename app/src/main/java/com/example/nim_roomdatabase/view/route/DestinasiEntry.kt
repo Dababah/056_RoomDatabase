@@ -1,10 +1,15 @@
-package com.example.nim_roomdatabase.view.route
 
-import com.example.nim_roomdatabase.R
+    val uiDetailState: StateFlow<DetailSiswaUiState> =
+        repositoriSiswa.getSiswaStream(idSiswa)
+            .filterNotNull()
+            .map {
+                DetailSiswaUiState(detailSiswa = it.toDetailSiswa())
+            }.stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
+                initialValue = DetailSiswaUiState()
+            )
+    suspend fun deleteSiswa(){
+        repositoriSiswa.deleteSiswa(uiDetailState.value.detailSiswa.toSiswa())
+    }
 
-object DestinasiEntry {
-    override val route = "item_entry"
-    override val titleRes = R.string.entry_siswa
-}
-
-c)
