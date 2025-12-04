@@ -12,5 +12,23 @@ import com.example.nim_roomdatabase.viewmodel.DetailViewModel
 import com.example.nim_roomdatabase.viewmodel.EntryViewModel
 import com.example.nim_roomdatabase.viewmodel.HomeViewModel
 
-object PenyediaViewModel {
+
+
+    val Factory = viewModelFactory{
+        initializer {
+            HomeViewModel(aplikasiSiswa().container.repositoriSiswa)
+        }
+
+        initializer {
+            EntryViewModel(aplikasiSiswa().container.repositoriSiswa)
+        }
+
+        initializer {
+            DetailViewModel(this.createSavedStateHandle(), aplikasiSiswa().container.repositoriSiswa)
+        }
+        initializer{
+            EditViewModel(this.createSavedStateHandle(),aplikasiSiswa().container.repositoriSiswa)
+        }
+    }
+}
 
